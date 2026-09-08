@@ -1,0 +1,21 @@
+# Homepage Custom API widget example
+#
+# Replace 192.168.1.100 with the address of the Docker host running
+# WD OS5 Exporter.
+
+- Storage:
+    - WD My Cloud:
+        icon: wd.png
+        description: NAS Health
+        widget:
+          type: customapi
+          url: http://192.168.1.100:8085/status
+          mappings:
+            - field: health_display
+              label: Health
+            - field: storage_percent_display
+              label: Storage
+            - field: temperature_display
+              label: Disks
+            - field: smart_display
+              label: SMART
