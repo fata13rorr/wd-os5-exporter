@@ -1,9 +1,6 @@
 services:
   wd-os5-exporter:
-    build:
-      context: .
-      dockerfile: Dockerfile
-
+    image: ghcr.io/fata13rorr/wd-os5-exporter:latest
     container_name: wd-os5-exporter
     restart: unless-stopped
 
@@ -14,8 +11,4 @@ services:
       - "${EXPORTER_PORT:-8085}:8085"
 
     volumes:
-      - "${SSH_KEY_FILE:-./nas_ed25519}:/run/secrets/nas_ssh_key:ro"
-
-networks:
-  default:
-    name: wd-os5-exporter
+      - "${SSH_KEY_FILE:-./id_ed25519}:/run/secrets/nas_ssh_key:ro"
